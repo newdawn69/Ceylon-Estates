@@ -45,7 +45,7 @@ public class SecurityConfig {
                         "/verify-2fa", "/resend-2fa-code",
                         "/verify-backup-code",
                         "/settings",
-                        "/css/**", "/js/**", "/api/health", "/h2-console/**"
+                        "/css/**", "/js/**", "/images/**", "/api/health", "/h2-console/**"
                 ).permitAll()
                 // Admin-only area - polymorphism decides who lands here, this just enforces it
                 .requestMatchers("/admin/**", "/admin").hasRole("ADMIN")
