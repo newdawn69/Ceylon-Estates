@@ -1,0 +1,4 @@
+101,Ceylon Villa,Negombo,House,25000000.00,Available
+102,Lake View Apartment,Colombo,Apartment,18000000.00,Reserved
+103,Green Land,Kurunegala,Land,12000000.00,Available
+104,City Commercial Center,Kandy,Commercial,35000000.00,Sold
