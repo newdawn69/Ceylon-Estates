@@ -10,6 +10,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.RememberMeServices;
 import org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices;
 import com.thenuka.socialweb.service.UserDetailsServiceImpl;
+import com.thenuka.socialweb.service.CustomOAuth2UserService;
 import com.thenuka.socialweb.config.TwoFactorAuthenticationSuccessHandler;
 
 @Configuration
@@ -35,7 +36,9 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http, TwoFactorAuthenticationSuccessHandler successHandler,
-                                            RememberMeServices rememberMeServices) throws Exception {
+                                            RememberMeServices rememberMeServices,
+                                            CustomOAuth2UserService customOAuth2UserService,
+                                            OAuth2LoginSuccessHandler oauth2LoginSuccessHandler) throws Exception {
         http
             .authorizeHttpRequests(auth -> auth
                 // Public pages - no login required
@@ -45,6 +48,7 @@ public class SecurityConfig {
                         "/verify-2fa", "/resend-2fa-code",
                         "/verify-backup-code",
                         "/settings",
+                        "/oauth2/**", "/login/oauth2/**", "/sso-handoff",
                         "/css/**", "/js/**", "/images/**", "/api/health", "/h2-console/**"
                 ).permitAll()
                 // Admin-only area - polymorphism decides who lands here, this just enforces it
@@ -57,6 +61,11 @@ public class SecurityConfig {
                 // Success doesn't mean "logged in" yet - see TwoFactorAuthenticationSuccessHandler
                 .successHandler(successHandler)
                 .permitAll()
+            )
+            .oauth2Login(oauth2 -> oauth2
+                .loginPage("/login")
+                .userInfoEndpoint(userInfo -> userInfo.userService(customOAuth2UserService))
+                .successHandler(oauth2LoginSuccessHandler)
             )
             .logout(logout -> logout
                 .logoutSuccessUrl("/")

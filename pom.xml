@@ -71,6 +71,12 @@
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
 
+        <!-- "Sign in with Google" support -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-client</artifactId>
+        </dependency>
+
         <!-- Auto-restart on code changes during development -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -53,6 +53,10 @@ public abstract class User {
     @Column
     private String gender; // "MALE" or "FEMALE", optional
 
+    // --- OAuth (e.g. "Sign in with Google") ---
+    @Column
+    private String oauthProvider; // "GOOGLE", or null for normal accounts
+
     // --- Password reset support ---
     @Column
     private String resetToken;
@@ -156,6 +160,14 @@ public abstract class User {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public String getOauthProvider() {
+        return oauthProvider;
+    }
+
+    public void setOauthProvider(String oauthProvider) {
+        this.oauthProvider = oauthProvider;
     }
 
     public String getResetToken() {
