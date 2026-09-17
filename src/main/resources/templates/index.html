@@ -6,7 +6,7 @@
 <body>
 
     <!-- Hero section: navbar floats on top of this background image -->
-    <div style="background-image: url('/images/hero-bg.jpg'); background-size: cover; background-position: center; min-height: 560px; display: flex; flex-direction: column;">
+    <div style="background-image: url('/images/hero-bg-original.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 100vh; min-height: 560px; display: flex; flex-direction: column;">
 
         <div th:replace="~{fragments/layout :: navbar}"></div>
         <div th:replace="~{fragments/layout :: sidebar}"></div>
@@ -19,6 +19,225 @@
 
     </div>
 
+    <!-- "Why us" section: full-screen two-column panel, mirrors the hero's fill-the-viewport approach -->
+    <section class="container-fluid p-0">
+        <div class="row g-0 min-vh-100">
+
+            <!-- Left: pitch + trust stats -->
+            <div class="col-lg-5 d-flex flex-column justify-content-center text-white p-5"
+                 style="background-color: #5f9ea0;">
+                <div style="border-left: 4px solid #fff; padding-left: 20px; margin-bottom: 28px;">
+                    <h2 class="fw-bold" style="font-size: 2.4rem;">Why Ceylon Estates is Number One?</h2>
+                </div>
+
+                <p style="font-size: 1.05rem; line-height: 1.7; max-width: 520px;">
+                    Everyone dreams of owning a great piece of property. At Ceylon Estates, we make that dream
+                    achievable — whether you're after land to build your own home, a finished house, or a modern
+                    apartment. We bring together verified listings from across Sri Lanka and support you at every
+                    step, from legal paperwork to financing guidance.
+                </p>
+
+                <a href="#" class="btn text-white fw-semibold d-inline-flex align-items-center gap-2 mt-2"
+                   style="background-color: #e63946; border-radius: 30px; padding: 10px 28px; width: fit-content;">
+                    Explore more <i class="bi bi-arrow-right"></i>
+                </a>
+
+                <div class="d-flex gap-5 mt-5">
+                    <div>
+                        <div class="fw-bold" style="font-size: 2rem;">5+</div>
+                        <div>Years of Trust</div>
+                    </div>
+                    <div>
+                        <div class="fw-bold" style="font-size: 2rem;">9</div>
+                        <div>Districts Covered</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: category cards -->
+            <div class="col-lg-7 d-flex flex-column gap-3 p-4" style="background-color: #f2efe9;">
+                <div class="flex-grow-1 d-flex align-items-end p-4 text-white"
+                     style="border-radius: 16px; min-height: 220px; background: linear-gradient(0deg, rgba(0,0,0,0.55), rgba(0,0,0,0.05)), linear-gradient(135deg, #2e7d32, #66bb6a);">
+                    <div>
+                        <div class="fw-bold fs-4"><i class="bi bi-tree-fill"></i> LANDS</div>
+                        <div class="fw-bold fs-3" style="color: #ff6b6b;">500+</div>
+                        <div class="fw-semibold">LAND LISTINGS</div>
+                    </div>
+                </div>
+
+                <div class="flex-grow-1 d-flex gap-3">
+                    <div class="flex-fill d-flex align-items-end p-4 text-white"
+                         style="border-radius: 16px; min-height: 220px; background: linear-gradient(0deg, rgba(0,0,0,0.55), rgba(0,0,0,0.05)), linear-gradient(135deg, #1565c0, #42a5f5);">
+                        <div>
+                            <div class="fw-bold fs-4"><i class="bi bi-house-door-fill"></i> HOUSES</div>
+                            <div class="fw-bold fs-5" style="color: #ff6b6b;">6</div>
+                            <div>ON GOING PROJECTS</div>
+                            <div class="fw-bold fs-5 mt-2" style="color: #ff6b6b;">28</div>
+                            <div>COMPLETED PROJECTS</div>
+                        </div>
+                    </div>
+
+                    <div class="flex-fill d-flex align-items-end p-4 text-white"
+                         style="border-radius: 16px; min-height: 220px; background: linear-gradient(0deg, rgba(0,0,0,0.55), rgba(0,0,0,0.05)), linear-gradient(135deg, #37474f, #78909c);">
+                        <div>
+                            <div class="fw-bold fs-4"><i class="bi bi-building-fill"></i> APARTMENTS</div>
+                            <div class="fw-bold fs-5" style="color: #ff6b6b;">8</div>
+                            <div>ON GOING PROJECTS</div>
+                            <div class="fw-bold fs-5 mt-2" style="color: #ff6b6b;">42</div>
+                            <div>COMPLETED PROJECTS</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Latest listings: header banner + auto-rotating carousel (7 listings, 4 visible at a time) -->
+    <section>
+        <div class="p-5 text-white" style="background-color: #7a9b76;">
+            <div style="border-left: 4px solid #e63946; padding-left: 16px;">
+                <h2 class="fw-bold" style="font-size: 2.2rem;">Explore Our Latest Listings</h2>
+            </div>
+            <p class="mt-2 mb-4" style="max-width: 620px;">
+                Browse through our newest property listings, meticulously designed to offer comfort and style.
+                Click on any listing to explore detailed views and amenities.
+            </p>
+
+            <div class="d-flex gap-3 flex-wrap" id="listingTabs">
+                <button type="button" class="listing-tab active" data-filter="land">
+                    <i class="bi bi-signpost-split-fill"></i> Lands
+                </button>
+                <button type="button" class="listing-tab" data-filter="house">
+                    <i class="bi bi-house-door-fill"></i> Houses
+                </button>
+                <button type="button" class="listing-tab" data-filter="apartment">
+                    <i class="bi bi-building-fill"></i> Apartments
+                </button>
+            </div>
+        </div>
+
+        <div class="py-4" style="background-color: #f5f5f0;">
+            <div class="listing-carousel-viewport px-3">
+                <div class="listing-carousel-track" id="listingTrack">
+
+                    <div class="listing-card" data-type="apartment">
+                        <div class="listing-card-inner">
+                            <div class="listing-thumb" style="background: linear-gradient(135deg, #37474f, #78909c);">
+                                <span class="listing-thumb-tag">APARTMENT</span>
+                            </div>
+                            <div class="listing-body">
+                                <h5 class="fw-bold mb-1">Emerald Heights &ndash; Kandy</h5>
+                                <div class="text-muted small mb-2"><i class="bi bi-geo-alt-fill"></i> Kandy</div>
+                                <div class="fw-bold">8,200,000 LKR</div>
+                                <div class="text-muted small fst-italic mb-2">FIXED PRICE</div>
+                                <hr>
+                                <a href="#" class="small fw-semibold text-decoration-none">Explore Apartment <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="listing-card" data-type="house">
+                        <div class="listing-card-inner">
+                            <div class="listing-thumb" style="background: linear-gradient(135deg, #1565c0, #42a5f5);">
+                                <span class="listing-thumb-tag">HOUSE</span>
+                            </div>
+                            <div class="listing-body">
+                                <h5 class="fw-bold mb-1">Silver Palm Residence &ndash; Galle</h5>
+                                <div class="text-muted small mb-2"><i class="bi bi-geo-alt-fill"></i> Galle</div>
+                                <div class="fw-bold">15,500,000 LKR</div>
+                                <div class="text-muted small fst-italic mb-2">FIXED PRICE</div>
+                                <hr>
+                                <a href="#" class="small fw-semibold text-decoration-none">Explore House <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="listing-card" data-type="land">
+                        <div class="listing-card-inner">
+                            <div class="listing-thumb" style="background: linear-gradient(135deg, #2e7d32, #66bb6a);">
+                                <span class="listing-thumb-tag">LAND</span>
+                            </div>
+                            <div class="listing-body">
+                                <h5 class="fw-bold mb-1">Sunview Block &ndash; Negombo</h5>
+                                <div class="text-muted small mb-2"><i class="bi bi-geo-alt-fill"></i> Negombo</div>
+                                <div class="fw-bold">650,000 LKR</div>
+                                <div class="text-muted small fst-italic mb-2">PER PERCH UPWARDS</div>
+                                <hr>
+                                <a href="#" class="small fw-semibold text-decoration-none">Explore Land <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="listing-card" data-type="house">
+                        <div class="listing-card-inner">
+                            <div class="listing-thumb" style="background: linear-gradient(135deg, #1565c0, #42a5f5);">
+                                <span class="listing-thumb-tag">HOUSE</span>
+                            </div>
+                            <div class="listing-body">
+                                <h5 class="fw-bold mb-1">Cinnamon Grove &ndash; Matara</h5>
+                                <div class="text-muted small mb-2"><i class="bi bi-geo-alt-fill"></i> Matara</div>
+                                <div class="fw-bold">12,000,000 LKR</div>
+                                <div class="text-muted small fst-italic mb-2">FIXED PRICE</div>
+                                <hr>
+                                <a href="#" class="small fw-semibold text-decoration-none">Explore House <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="listing-card" data-type="apartment">
+                        <div class="listing-card-inner">
+                            <div class="listing-thumb" style="background: linear-gradient(135deg, #37474f, #78909c);">
+                                <span class="listing-thumb-tag">APARTMENT</span>
+                            </div>
+                            <div class="listing-body">
+                                <h5 class="fw-bold mb-1">Skyline Towers &ndash; Colombo</h5>
+                                <div class="text-muted small mb-2"><i class="bi bi-geo-alt-fill"></i> Colombo</div>
+                                <div class="fw-bold">22,750,000 LKR</div>
+                                <div class="text-muted small fst-italic mb-2">FIXED PRICE</div>
+                                <hr>
+                                <a href="#" class="small fw-semibold text-decoration-none">Explore Apartment <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="listing-card" data-type="land">
+                        <div class="listing-card-inner">
+                            <div class="listing-thumb" style="background: linear-gradient(135deg, #2e7d32, #66bb6a);">
+                                <span class="listing-thumb-tag">LAND</span>
+                            </div>
+                            <div class="listing-body">
+                                <h5 class="fw-bold mb-1">Hillcrest Acres &ndash; Nuwara Eliya</h5>
+                                <div class="text-muted small mb-2"><i class="bi bi-geo-alt-fill"></i> Nuwara Eliya</div>
+                                <div class="fw-bold">480,000 LKR</div>
+                                <div class="text-muted small fst-italic mb-2">PER PERCH UPWARDS</div>
+                                <hr>
+                                <a href="#" class="small fw-semibold text-decoration-none">Explore Land <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="listing-card" data-type="house">
+                        <div class="listing-card-inner">
+                            <div class="listing-thumb" style="background: linear-gradient(135deg, #1565c0, #42a5f5);">
+                                <span class="listing-thumb-tag">HOUSE</span>
+                            </div>
+                            <div class="listing-body">
+                                <h5 class="fw-bold mb-1">Coral Bay Homes &ndash; Trincomalee</h5>
+                                <div class="text-muted small mb-2"><i class="bi bi-geo-alt-fill"></i> Trincomalee</div>
+                                <div class="fw-bold">9,900,000 LKR</div>
+                                <div class="text-muted small fst-italic mb-2">FIXED PRICE</div>
+                                <hr>
+                                <a href="#" class="small fw-semibold text-decoration-none">Explore House <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
     <main class="container" style="max-width: 700px; margin-top: 40px; margin-bottom: 50px;">
         <div class="alert alert-success" th:if="${param.accountDeleted}" th:text="#{home.accountDeleted}"></div>
         <p th:text="#{home.next}"></p>
@@ -26,5 +245,6 @@
 
     <div th:replace="~{fragments/layout :: footer}"></div>
     <div th:replace="~{fragments/layout :: scripts}"></div>
+    <script th:src="@{/js/listings-carousel.js}"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-package com.thenuka.socialweb.config;
+package com.example.ceylonestate.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,9 +9,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.RememberMeServices;
 import org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices;
-import com.thenuka.socialweb.service.UserDetailsServiceImpl;
-import com.thenuka.socialweb.service.CustomOAuth2UserService;
-import com.thenuka.socialweb.config.TwoFactorAuthenticationSuccessHandler;
+import com.example.ceylonestate.service.UserDetailsServiceImpl;
+import com.example.ceylonestate.service.CustomOAuth2UserService;
+import com.example.ceylonestate.config.TwoFactorAuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity

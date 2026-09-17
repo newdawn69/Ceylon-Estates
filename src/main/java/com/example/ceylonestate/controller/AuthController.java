@@ -1,10 +1,10 @@
-package com.thenuka.socialweb.controller;
+package com.example.ceylonestate.controller;
 
-import com.thenuka.socialweb.model.AdminUser;
-import com.thenuka.socialweb.model.RegularUser;
-import com.thenuka.socialweb.model.User;
-import com.thenuka.socialweb.repository.UserRepository;
-import com.thenuka.socialweb.service.EmailService;
+import com.example.ceylonestate.model.AdminUser;
+import com.example.ceylonestate.model.RegularUser;
+import com.example.ceylonestate.model.User;
+import com.example.ceylonestate.repository.UserRepository;
+import com.example.ceylonestate.service.EmailService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -15,7 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import com.thenuka.socialweb.service.AvatarStorageService;
+import com.example.ceylonestate.service.AvatarStorageService;
 import java.io.IOException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

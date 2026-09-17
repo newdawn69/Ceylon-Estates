@@ -1,8 +1,8 @@
-package com.thenuka.socialweb.service;
+package com.example.ceylonestate.service;
 
-import com.thenuka.socialweb.model.RegularUser;
-import com.thenuka.socialweb.model.User;
-import com.thenuka.socialweb.repository.UserRepository;
+import com.example.ceylonestate.model.RegularUser;
+import com.example.ceylonestate.model.User;
+import com.example.ceylonestate.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;

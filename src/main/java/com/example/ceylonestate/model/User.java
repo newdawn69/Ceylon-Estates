@@ -1,4 +1,4 @@
-package com.thenuka.socialweb.model;
+package com.example.ceylonestate.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;

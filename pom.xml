@@ -11,7 +11,7 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.thenuka</groupId>
+    <groupId>com.example</groupId>
     <artifactId>social-web-foundation</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>social-web-foundation</name>

@@ -1,4 +1,4 @@
-package com.thenuka.socialweb.service;
+package com.example.ceylonestate.service;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;

@@ -1,7 +1,7 @@
-package com.thenuka.socialweb.controller;
+package com.example.ceylonestate.controller;
 
-import com.thenuka.socialweb.model.User;
-import com.thenuka.socialweb.repository.UserRepository;
+import com.example.ceylonestate.model.User;
+import com.example.ceylonestate.repository.UserRepository;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;

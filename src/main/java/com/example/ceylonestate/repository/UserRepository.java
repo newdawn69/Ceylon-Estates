@@ -1,6 +1,6 @@
-package com.thenuka.socialweb.repository;
+package com.example.ceylonestate.repository;
 
-import com.thenuka.socialweb.model.User;
+import com.example.ceylonestate.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

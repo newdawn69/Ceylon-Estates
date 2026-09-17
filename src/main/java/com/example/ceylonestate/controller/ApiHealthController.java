@@ -1,4 +1,4 @@
-package com.thenuka.socialweb.controller;
+package com.example.ceylonestate.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

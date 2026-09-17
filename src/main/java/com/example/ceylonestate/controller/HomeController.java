@@ -1,4 +1,4 @@
-package com.thenuka.socialweb.controller;
+package com.example.ceylonestate.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

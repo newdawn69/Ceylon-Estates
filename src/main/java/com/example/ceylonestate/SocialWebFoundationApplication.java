@@ -1,4 +1,4 @@
-package com.thenuka.socialweb;
+package com.example.ceylonestate;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

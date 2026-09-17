@@ -1,7 +1,7 @@
-package com.thenuka.socialweb.service;
+package com.example.ceylonestate.service;
 
-import com.thenuka.socialweb.model.User;
-import com.thenuka.socialweb.repository.UserRepository;
+import com.example.ceylonestate.model.User;
+import com.example.ceylonestate.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

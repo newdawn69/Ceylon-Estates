@@ -1,9 +1,9 @@
-package com.thenuka.socialweb.controller;
+package com.example.ceylonestate.controller;
 
-import com.thenuka.socialweb.model.User;
-import com.thenuka.socialweb.repository.UserRepository;
-import com.thenuka.socialweb.service.EmailService;
-import com.thenuka.socialweb.service.UserDetailsServiceImpl;
+import com.example.ceylonestate.model.User;
+import com.example.ceylonestate.repository.UserRepository;
+import com.example.ceylonestate.service.EmailService;
+import com.example.ceylonestate.service.UserDetailsServiceImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;

@@ -1,7 +1,7 @@
-package com.thenuka.socialweb.controller;
+package com.example.ceylonestate.controller;
 
-import com.thenuka.socialweb.service.SsoHandoffService;
-import com.thenuka.socialweb.service.UserDetailsServiceImpl;
+import com.example.ceylonestate.service.SsoHandoffService;
+import com.example.ceylonestate.service.UserDetailsServiceImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContext;

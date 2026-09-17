@@ -226,3 +226,104 @@ body {
     color: #8b93ff;
     font-weight: 500;
 }
+
+/* ---------- Latest listings section (tabs + auto-rotating carousel) ---------- */
+
+.listing-tab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #fff;
+    color: #333;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 22px;
+    font-weight: 600;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.listing-tab.active {
+    background-color: #3f5b45;
+    color: #fff;
+}
+
+.listing-carousel-viewport {
+    overflow: hidden;
+}
+
+.listing-carousel-track {
+    display: flex;
+    transition: transform 0.6s ease;
+}
+
+.listing-card {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+@media (min-width: 576px) {
+    .listing-card {
+        flex-basis: 50%;
+        max-width: 50%;
+    }
+}
+
+@media (min-width: 992px) {
+    .listing-card {
+        flex-basis: 25%;
+        max-width: 25%;
+    }
+}
+
+.listing-card-inner {
+    background-color: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* The "pop up" on hover */
+.listing-card-inner:hover {
+    transform: translateY(-10px) scale(1.04);
+    box-shadow: 0 18px 34px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 2;
+}
+
+.listing-thumb {
+    height: 200px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 14px;
+}
+
+.listing-thumb-tag {
+    background: rgba(0, 0, 0, 0.45);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 4px 10px;
+    border-radius: 999px;
+}
+
+.listing-body {
+    padding: 18px 20px;
+    /* The card itself always has a white background regardless of the site's
+       light/dark theme toggle, so its text needs fixed dark colors too —
+       otherwise dark mode's light default text color becomes unreadable here. */
+    color: #1a1a1a;
+}
+
+.listing-body .text-muted {
+    color: #6c757d !important;
+}
+
+.listing-body a {
+    color: #1565c0;
+}

@@ -1,4 +1,4 @@
-package com.thenuka.socialweb.service;
+package com.example.ceylonestate.service;
 
 import org.springframework.stereotype.Service;
 
