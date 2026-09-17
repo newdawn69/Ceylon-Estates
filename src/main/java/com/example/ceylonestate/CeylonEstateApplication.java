@@ -9,5 +9,4 @@ public class CeylonEstateApplication {
     public static void main(String[] args) {
         SpringApplication.run(CeylonEstateApplication.class, args);
     }
-
 }
