@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/layout :: head}">
-    <title>Project 28</title>
+    <title>Ceylon Estates</title>
 </head>
 <body>
 
     <!-- Hero section: navbar floats on top of this background image -->
-    <div style="background-image: url('/images/hero-bg-original.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 100vh; min-height: 560px; display: flex; flex-direction: column;">
+    <div class="position-relative" style="background-image: url('/images/hero-bg-original.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 100vh; min-height: 560px; display: flex; flex-direction: column;">
 
         <div th:replace="~{fragments/layout :: navbar}"></div>
         <div th:replace="~{fragments/layout :: sidebar}"></div>
 
         <div class="d-flex flex-column align-items-center justify-content-center text-center flex-grow-1 text-white px-3"
              style="text-shadow: 0 2px 16px rgba(0,0,0,0.6);">
-            <h1 class="display-4 fw-bold" th:text="${appName}">Project 28</h1>
-            <p class="lead" style="max-width: 600px;" th:text="#{home.description}">Foundation is running</p>
+            <div class="text-uppercase fw-semibold" style="letter-spacing: 0.3em; font-size: clamp(1.4rem, 3vw, 2.2rem);">Start your story in</div>
+            <div style="font-family: 'Dancing Script', cursive; font-size: clamp(4rem, 11vw, 7.5rem); line-height: 1.2; min-height: 1.2em;">
+                <span id="heroTypedWord" data-word="Ceylon"></span><span class="hero-typed-cursor">|</span>
+            </div>
         </div>
+
+        <div class="position-absolute text-white text-end d-none d-md-block"
+             style="right: 5%; bottom: 8%; text-shadow: 0 2px 12px rgba(0,0,0,0.6); font-size: 1.3rem; line-height: 1.4;">Timeless charm, island wide.</div>
 
     </div>
 
@@ -26,65 +31,62 @@
             <!-- Left: pitch + trust stats -->
             <div class="col-lg-5 d-flex flex-column justify-content-center text-white p-5"
                  style="background-color: #5f9ea0;">
-                <div style="border-left: 4px solid #fff; padding-left: 20px; margin-bottom: 28px;">
-                    <h2 class="fw-bold" style="font-size: 2.4rem;">Why Ceylon Estates is Number One?</h2>
+                <div style="border-left: 4px solid #fff; padding-left: 20px; margin-bottom: 28px;" class="reveal-on-scroll">
+                    <h2 class="fw-bold" style="font-size: 2.4rem;" th:text="#{home.whyUs.heading}">Why Ceylon Estates is Number One?</h2>
                 </div>
 
-                <p style="font-size: 1.05rem; line-height: 1.7; max-width: 520px;">
-                    Everyone dreams of owning a great piece of property. At Ceylon Estates, we make that dream
-                    achievable — whether you're after land to build your own home, a finished house, or a modern
-                    apartment. We bring together verified listings from across Sri Lanka and support you at every
-                    step, from legal paperwork to financing guidance.
+                <p style="font-size: 1.05rem; line-height: 1.7; max-width: 520px;" th:text="#{home.whyUs.body}" class="reveal-on-scroll">
+                    Everyone dreams of owning a great piece of property.
                 </p>
 
-                <a href="#" class="btn text-white fw-semibold d-inline-flex align-items-center gap-2 mt-2"
+                <a href="#" class="btn text-white fw-semibold d-inline-flex align-items-center gap-2 mt-2 reveal-on-scroll"
                    style="background-color: #e63946; border-radius: 30px; padding: 10px 28px; width: fit-content;">
-                    Explore more <i class="bi bi-arrow-right"></i>
+                    <span th:text="#{home.whyUs.exploreMore}">Explore more</span> <i class="bi bi-arrow-right"></i>
                 </a>
 
-                <div class="d-flex gap-5 mt-5">
+                <div class="d-flex gap-5 mt-5 reveal-on-scroll">
                     <div>
                         <div class="fw-bold" style="font-size: 2rem;">5+</div>
-                        <div>Years of Trust</div>
+                        <div th:text="#{home.whyUs.yearsOfTrust}">Years of Trust</div>
                     </div>
                     <div>
                         <div class="fw-bold" style="font-size: 2rem;">9</div>
-                        <div>Districts Covered</div>
+                        <div th:text="#{home.whyUs.districtsCovered}">Districts Covered</div>
                     </div>
                 </div>
             </div>
 
             <!-- Right: category cards -->
             <div class="col-lg-7 d-flex flex-column gap-3 p-4" style="background-color: #f2efe9;">
-                <div class="flex-grow-1 d-flex align-items-end p-4 text-white"
+                <div class="flex-grow-1 d-flex align-items-end p-4 text-white reveal-on-scroll"
                      style="border-radius: 16px; min-height: 220px; background: linear-gradient(0deg, rgba(0,0,0,0.55), rgba(0,0,0,0.05)), linear-gradient(135deg, #2e7d32, #66bb6a);">
                     <div>
-                        <div class="fw-bold fs-4"><i class="bi bi-tree-fill"></i> LANDS</div>
+                        <div class="fw-bold fs-4"><i class="bi bi-tree-fill"></i> <span th:text="#{home.whyUs.landsTag}">LANDS</span></div>
                         <div class="fw-bold fs-3" style="color: #ff6b6b;">500+</div>
-                        <div class="fw-semibold">LAND LISTINGS</div>
+                        <div class="fw-semibold" th:text="#{home.whyUs.landListings}">LAND LISTINGS</div>
                     </div>
                 </div>
 
                 <div class="flex-grow-1 d-flex gap-3">
-                    <div class="flex-fill d-flex align-items-end p-4 text-white"
-                         style="border-radius: 16px; min-height: 220px; background: linear-gradient(0deg, rgba(0,0,0,0.55), rgba(0,0,0,0.05)), linear-gradient(135deg, #1565c0, #42a5f5);">
+                    <div class="flex-fill d-flex align-items-end p-4 text-white reveal-on-scroll"
+                         style="border-radius: 16px; min-height: 220px; transition-delay: 0.1s; background: linear-gradient(0deg, rgba(0,0,0,0.55), rgba(0,0,0,0.05)), linear-gradient(135deg, #1565c0, #42a5f5);">
                         <div>
-                            <div class="fw-bold fs-4"><i class="bi bi-house-door-fill"></i> HOUSES</div>
+                            <div class="fw-bold fs-4"><i class="bi bi-house-door-fill"></i> <span th:text="#{home.whyUs.housesTag}">HOUSES</span></div>
                             <div class="fw-bold fs-5" style="color: #ff6b6b;">6</div>
-                            <div>ON GOING PROJECTS</div>
+                            <div th:text="#{home.whyUs.onGoingProjects}">ON GOING PROJECTS</div>
                             <div class="fw-bold fs-5 mt-2" style="color: #ff6b6b;">28</div>
-                            <div>COMPLETED PROJECTS</div>
+                            <div th:text="#{home.whyUs.completedProjects}">COMPLETED PROJECTS</div>
                         </div>
                     </div>
 
-                    <div class="flex-fill d-flex align-items-end p-4 text-white"
-                         style="border-radius: 16px; min-height: 220px; background: linear-gradient(0deg, rgba(0,0,0,0.55), rgba(0,0,0,0.05)), linear-gradient(135deg, #37474f, #78909c);">
+                    <div class="flex-fill d-flex align-items-end p-4 text-white reveal-on-scroll"
+                         style="border-radius: 16px; min-height: 220px; transition-delay: 0.2s; background: linear-gradient(0deg, rgba(0,0,0,0.55), rgba(0,0,0,0.05)), linear-gradient(135deg, #37474f, #78909c);">
                         <div>
-                            <div class="fw-bold fs-4"><i class="bi bi-building-fill"></i> APARTMENTS</div>
+                            <div class="fw-bold fs-4"><i class="bi bi-building-fill"></i> <span th:text="#{home.whyUs.apartmentsTag}">APARTMENTS</span></div>
                             <div class="fw-bold fs-5" style="color: #ff6b6b;">8</div>
-                            <div>ON GOING PROJECTS</div>
+                            <div th:text="#{home.whyUs.onGoingProjects}">ON GOING PROJECTS</div>
                             <div class="fw-bold fs-5 mt-2" style="color: #ff6b6b;">42</div>
-                            <div>COMPLETED PROJECTS</div>
+                            <div th:text="#{home.whyUs.completedProjects}">COMPLETED PROJECTS</div>
                         </div>
                     </div>
                 </div>
@@ -96,23 +98,22 @@
     <!-- Latest listings: header banner + auto-rotating carousel (7 listings, 4 visible at a time) -->
     <section>
         <div class="p-5 text-white" style="background-color: #7a9b76;">
-            <div style="border-left: 4px solid #e63946; padding-left: 16px;">
-                <h2 class="fw-bold" style="font-size: 2.2rem;">Explore Our Latest Listings</h2>
+            <div style="border-left: 4px solid #e63946; padding-left: 16px;" class="reveal-on-scroll">
+                <h2 class="fw-bold" style="font-size: 2.2rem;" th:text="#{home.listings.heading}">Explore Our Latest Listings</h2>
             </div>
-            <p class="mt-2 mb-4" style="max-width: 620px;">
-                Browse through our newest property listings, meticulously designed to offer comfort and style.
-                Click on any listing to explore detailed views and amenities.
+            <p class="mt-2 mb-4 reveal-on-scroll" style="max-width: 620px;" th:text="#{home.listings.body}">
+                Browse through our newest property listings.
             </p>
 
-            <div class="d-flex gap-3 flex-wrap" id="listingTabs">
+            <div class="d-flex gap-3 flex-wrap reveal-on-scroll" id="listingTabs" style="transition-delay: 0.15s;">
                 <button type="button" class="listing-tab active" data-filter="land">
-                    <i class="bi bi-signpost-split-fill"></i> Lands
+                    <i class="bi bi-signpost-split-fill"></i> <span th:text="#{home.listings.tabLands}">Lands</span>
                 </button>
                 <button type="button" class="listing-tab" data-filter="house">
-                    <i class="bi bi-house-door-fill"></i> Houses
+                    <i class="bi bi-house-door-fill"></i> <span th:text="#{home.listings.tabHouses}">Houses</span>
                 </button>
                 <button type="button" class="listing-tab" data-filter="apartment">
-                    <i class="bi bi-building-fill"></i> Apartments
+                    <i class="bi bi-building-fill"></i> <span th:text="#{home.listings.tabApartments}">Apartments</span>
                 </button>
             </div>
         </div>
@@ -121,119 +122,241 @@
             <div class="listing-carousel-viewport px-3">
                 <div class="listing-carousel-track" id="listingTrack">
 
-                    <div class="listing-card" data-type="apartment">
+                    <div class="listing-card reveal-on-scroll" data-type="apartment">
                         <div class="listing-card-inner">
                             <div class="listing-thumb" style="background: linear-gradient(135deg, #37474f, #78909c);">
-                                <span class="listing-thumb-tag">APARTMENT</span>
+                                <span class="listing-thumb-tag" th:text="#{home.listings.tagApartment}">APARTMENT</span>
                             </div>
                             <div class="listing-body">
                                 <h5 class="fw-bold mb-1">Emerald Heights &ndash; Kandy</h5>
                                 <div class="text-muted small mb-2"><i class="bi bi-geo-alt-fill"></i> Kandy</div>
                                 <div class="fw-bold">8,200,000 LKR</div>
-                                <div class="text-muted small fst-italic mb-2">FIXED PRICE</div>
+                                <div class="text-muted small fst-italic mb-2" th:text="#{home.listings.fixedPrice}">FIXED PRICE</div>
                                 <hr>
-                                <a href="#" class="small fw-semibold text-decoration-none">Explore Apartment <i class="bi bi-arrow-right"></i></a>
+                                <a href="#" class="small fw-semibold text-decoration-none"><span th:text="#{home.listings.exploreApartment}">Explore Apartment</span> <i class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="listing-card" data-type="house">
+                    <div class="listing-card reveal-on-scroll" data-type="house">
                         <div class="listing-card-inner">
                             <div class="listing-thumb" style="background: linear-gradient(135deg, #1565c0, #42a5f5);">
-                                <span class="listing-thumb-tag">HOUSE</span>
+                                <span class="listing-thumb-tag" th:text="#{home.listings.tagHouse}">HOUSE</span>
                             </div>
                             <div class="listing-body">
                                 <h5 class="fw-bold mb-1">Silver Palm Residence &ndash; Galle</h5>
                                 <div class="text-muted small mb-2"><i class="bi bi-geo-alt-fill"></i> Galle</div>
                                 <div class="fw-bold">15,500,000 LKR</div>
-                                <div class="text-muted small fst-italic mb-2">FIXED PRICE</div>
+                                <div class="text-muted small fst-italic mb-2" th:text="#{home.listings.fixedPrice}">FIXED PRICE</div>
                                 <hr>
-                                <a href="#" class="small fw-semibold text-decoration-none">Explore House <i class="bi bi-arrow-right"></i></a>
+                                <a href="#" class="small fw-semibold text-decoration-none"><span th:text="#{home.listings.exploreHouse}">Explore House</span> <i class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="listing-card" data-type="land">
+                    <div class="listing-card reveal-on-scroll" data-type="land">
                         <div class="listing-card-inner">
                             <div class="listing-thumb" style="background: linear-gradient(135deg, #2e7d32, #66bb6a);">
-                                <span class="listing-thumb-tag">LAND</span>
+                                <span class="listing-thumb-tag" th:text="#{home.listings.tagLand}">LAND</span>
                             </div>
                             <div class="listing-body">
                                 <h5 class="fw-bold mb-1">Sunview Block &ndash; Negombo</h5>
                                 <div class="text-muted small mb-2"><i class="bi bi-geo-alt-fill"></i> Negombo</div>
                                 <div class="fw-bold">650,000 LKR</div>
-                                <div class="text-muted small fst-italic mb-2">PER PERCH UPWARDS</div>
+                                <div class="text-muted small fst-italic mb-2" th:text="#{home.listings.perPerchUpwards}">PER PERCH UPWARDS</div>
                                 <hr>
-                                <a href="#" class="small fw-semibold text-decoration-none">Explore Land <i class="bi bi-arrow-right"></i></a>
+                                <a href="#" class="small fw-semibold text-decoration-none"><span th:text="#{home.listings.exploreLand}">Explore Land</span> <i class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="listing-card" data-type="house">
+                    <div class="listing-card reveal-on-scroll" data-type="house">
                         <div class="listing-card-inner">
                             <div class="listing-thumb" style="background: linear-gradient(135deg, #1565c0, #42a5f5);">
-                                <span class="listing-thumb-tag">HOUSE</span>
+                                <span class="listing-thumb-tag" th:text="#{home.listings.tagHouse}">HOUSE</span>
                             </div>
                             <div class="listing-body">
                                 <h5 class="fw-bold mb-1">Cinnamon Grove &ndash; Matara</h5>
                                 <div class="text-muted small mb-2"><i class="bi bi-geo-alt-fill"></i> Matara</div>
                                 <div class="fw-bold">12,000,000 LKR</div>
-                                <div class="text-muted small fst-italic mb-2">FIXED PRICE</div>
+                                <div class="text-muted small fst-italic mb-2" th:text="#{home.listings.fixedPrice}">FIXED PRICE</div>
                                 <hr>
-                                <a href="#" class="small fw-semibold text-decoration-none">Explore House <i class="bi bi-arrow-right"></i></a>
+                                <a href="#" class="small fw-semibold text-decoration-none"><span th:text="#{home.listings.exploreHouse}">Explore House</span> <i class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="listing-card" data-type="apartment">
+                    <div class="listing-card reveal-on-scroll" data-type="apartment">
                         <div class="listing-card-inner">
                             <div class="listing-thumb" style="background: linear-gradient(135deg, #37474f, #78909c);">
-                                <span class="listing-thumb-tag">APARTMENT</span>
+                                <span class="listing-thumb-tag" th:text="#{home.listings.tagApartment}">APARTMENT</span>
                             </div>
                             <div class="listing-body">
                                 <h5 class="fw-bold mb-1">Skyline Towers &ndash; Colombo</h5>
                                 <div class="text-muted small mb-2"><i class="bi bi-geo-alt-fill"></i> Colombo</div>
                                 <div class="fw-bold">22,750,000 LKR</div>
-                                <div class="text-muted small fst-italic mb-2">FIXED PRICE</div>
+                                <div class="text-muted small fst-italic mb-2" th:text="#{home.listings.fixedPrice}">FIXED PRICE</div>
                                 <hr>
-                                <a href="#" class="small fw-semibold text-decoration-none">Explore Apartment <i class="bi bi-arrow-right"></i></a>
+                                <a href="#" class="small fw-semibold text-decoration-none"><span th:text="#{home.listings.exploreApartment}">Explore Apartment</span> <i class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="listing-card" data-type="land">
+                    <div class="listing-card reveal-on-scroll" data-type="land">
                         <div class="listing-card-inner">
                             <div class="listing-thumb" style="background: linear-gradient(135deg, #2e7d32, #66bb6a);">
-                                <span class="listing-thumb-tag">LAND</span>
+                                <span class="listing-thumb-tag" th:text="#{home.listings.tagLand}">LAND</span>
                             </div>
                             <div class="listing-body">
                                 <h5 class="fw-bold mb-1">Hillcrest Acres &ndash; Nuwara Eliya</h5>
                                 <div class="text-muted small mb-2"><i class="bi bi-geo-alt-fill"></i> Nuwara Eliya</div>
                                 <div class="fw-bold">480,000 LKR</div>
-                                <div class="text-muted small fst-italic mb-2">PER PERCH UPWARDS</div>
+                                <div class="text-muted small fst-italic mb-2" th:text="#{home.listings.perPerchUpwards}">PER PERCH UPWARDS</div>
                                 <hr>
-                                <a href="#" class="small fw-semibold text-decoration-none">Explore Land <i class="bi bi-arrow-right"></i></a>
+                                <a href="#" class="small fw-semibold text-decoration-none"><span th:text="#{home.listings.exploreLand}">Explore Land</span> <i class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="listing-card" data-type="house">
+                    <div class="listing-card reveal-on-scroll" data-type="house">
                         <div class="listing-card-inner">
                             <div class="listing-thumb" style="background: linear-gradient(135deg, #1565c0, #42a5f5);">
-                                <span class="listing-thumb-tag">HOUSE</span>
+                                <span class="listing-thumb-tag" th:text="#{home.listings.tagHouse}">HOUSE</span>
                             </div>
                             <div class="listing-body">
                                 <h5 class="fw-bold mb-1">Coral Bay Homes &ndash; Trincomalee</h5>
                                 <div class="text-muted small mb-2"><i class="bi bi-geo-alt-fill"></i> Trincomalee</div>
                                 <div class="fw-bold">9,900,000 LKR</div>
-                                <div class="text-muted small fst-italic mb-2">FIXED PRICE</div>
+                                <div class="text-muted small fst-italic mb-2" th:text="#{home.listings.fixedPrice}">FIXED PRICE</div>
                                 <hr>
-                                <a href="#" class="small fw-semibold text-decoration-none">Explore House <i class="bi bi-arrow-right"></i></a>
+                                <a href="#" class="small fw-semibold text-decoration-none"><span th:text="#{home.listings.exploreHouse}">Explore House</span> <i class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
 
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Local mortgage brokers: province filter + horizontally scrollable row (arrow-navigated, same hover "pop" as listing cards) -->
+    <section class="py-5">
+        <div class="container-fluid px-4">
+            <h2 class="fw-bold mb-3 reveal-on-scroll" th:text="#{home.brokers.heading}">Local mortgage brokers</h2>
+
+            <div class="dropdown mb-4 reveal-on-scroll" style="transition-delay: 0.1s;">
+                <button class="btn broker-filter-btn dropdown-toggle" type="button" id="brokerDistrictDropdown"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-geo-alt"></i>
+                    <span id="brokerDistrictLabel" th:text="#{home.brokers.aroundYou}">Brokers around you</span>
+                </button>
+                <ul class="dropdown-menu" id="brokerDistrictMenu" aria-labelledby="brokerDistrictDropdown">
+                    <li><a class="dropdown-item broker-district-option active" href="#" data-province="all"
+                           th:text="#{home.brokers.aroundYou}">Brokers around you</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item broker-district-option" href="#" data-province="western" th:text="#{province.western}">Western Province</a></li>
+                    <li><a class="dropdown-item broker-district-option" href="#" data-province="central" th:text="#{province.central}">Central Province</a></li>
+                    <li><a class="dropdown-item broker-district-option" href="#" data-province="southern" th:text="#{province.southern}">Southern Province</a></li>
+                    <li><a class="dropdown-item broker-district-option" href="#" data-province="northern" th:text="#{province.northern}">Northern Province</a></li>
+                    <li><a class="dropdown-item broker-district-option" href="#" data-province="eastern" th:text="#{province.eastern}">Eastern Province</a></li>
+                    <li><a class="dropdown-item broker-district-option" href="#" data-province="northWestern" th:text="#{province.northWestern}">North Western Province</a></li>
+                    <li><a class="dropdown-item broker-district-option" href="#" data-province="northCentral" th:text="#{province.northCentral}">North Central Province</a></li>
+                    <li><a class="dropdown-item broker-district-option" href="#" data-province="uva" th:text="#{province.uva}">Uva Province</a></li>
+                    <li><a class="dropdown-item broker-district-option" href="#" data-province="sabaragamuwa" th:text="#{province.sabaragamuwa}">Sabaragamuwa Province</a></li>
+                </ul>
+            </div>
+
+            <div class="position-relative">
+                <div class="broker-row-viewport" id="brokerViewport">
+                    <div class="broker-row" id="brokerRow">
+
+                        <div class="broker-card reveal-on-scroll" data-province="western">
+                            <div class="broker-card-inner text-center p-3">
+                                <div class="broker-avatar mx-auto mb-3" style="background: linear-gradient(135deg, #5f9ea0, #2e7d32);"><i class="bi bi-person-fill"></i></div>
+                                <h6 class="fw-bold mb-0">Nadeesha Perera</h6>
+                                <div class="small text-primary mb-2" th:text="#{home.brokers.role}">Mortgage Broker</div>
+                                <div class="small text-muted"><span th:text="#{home.brokers.basedIn}">Based in</span> Colombo</div>
+                            </div>
+                        </div>
+
+                        <div class="broker-card reveal-on-scroll" data-province="central">
+                            <div class="broker-card-inner text-center p-3">
+                                <div class="broker-avatar mx-auto mb-3" style="background: linear-gradient(135deg, #1565c0, #42a5f5);"><i class="bi bi-person-fill"></i></div>
+                                <h6 class="fw-bold mb-0">Kasun Wickramasinghe</h6>
+                                <div class="small text-primary mb-2" th:text="#{home.brokers.role}">Mortgage Broker</div>
+                                <div class="small text-muted"><span th:text="#{home.brokers.basedIn}">Based in</span> Kandy</div>
+                            </div>
+                        </div>
+
+                        <div class="broker-card reveal-on-scroll" data-province="southern">
+                            <div class="broker-card-inner text-center p-3">
+                                <div class="broker-avatar mx-auto mb-3" style="background: linear-gradient(135deg, #e63946, #ff8fa3);"><i class="bi bi-person-fill"></i></div>
+                                <h6 class="fw-bold mb-0">Dilani Fernando</h6>
+                                <div class="small text-primary mb-2" th:text="#{home.brokers.role}">Mortgage Broker</div>
+                                <div class="small text-muted"><span th:text="#{home.brokers.basedIn}">Based in</span> Galle</div>
+                            </div>
+                        </div>
+
+                        <div class="broker-card reveal-on-scroll" data-province="northern">
+                            <div class="broker-card-inner text-center p-3">
+                                <div class="broker-avatar mx-auto mb-3" style="background: linear-gradient(135deg, #37474f, #78909c);"><i class="bi bi-person-fill"></i></div>
+                                <h6 class="fw-bold mb-0">Thurairajah Kumar</h6>
+                                <div class="small text-primary mb-2" th:text="#{home.brokers.role}">Mortgage Broker</div>
+                                <div class="small text-muted"><span th:text="#{home.brokers.basedIn}">Based in</span> Jaffna</div>
+                            </div>
+                        </div>
+
+                        <div class="broker-card reveal-on-scroll" data-province="eastern">
+                            <div class="broker-card-inner text-center p-3">
+                                <div class="broker-avatar mx-auto mb-3" style="background: linear-gradient(135deg, #2e7d32, #66bb6a);"><i class="bi bi-person-fill"></i></div>
+                                <h6 class="fw-bold mb-0">Farhana Rizvi</h6>
+                                <div class="small text-primary mb-2" th:text="#{home.brokers.role}">Mortgage Broker</div>
+                                <div class="small text-muted"><span th:text="#{home.brokers.basedIn}">Based in</span> Trincomalee</div>
+                            </div>
+                        </div>
+
+                        <div class="broker-card reveal-on-scroll" data-province="northWestern">
+                            <div class="broker-card-inner text-center p-3">
+                                <div class="broker-avatar mx-auto mb-3" style="background: linear-gradient(135deg, #6a4c93, #b892ff);"><i class="bi bi-person-fill"></i></div>
+                                <h6 class="fw-bold mb-0">Ruwan Jayasuriya</h6>
+                                <div class="small text-primary mb-2" th:text="#{home.brokers.role}">Mortgage Broker</div>
+                                <div class="small text-muted"><span th:text="#{home.brokers.basedIn}">Based in</span> Kurunegala</div>
+                            </div>
+                        </div>
+
+                        <div class="broker-card reveal-on-scroll" data-province="northCentral">
+                            <div class="broker-card-inner text-center p-3">
+                                <div class="broker-avatar mx-auto mb-3" style="background: linear-gradient(135deg, #b08968, #ddb892);"><i class="bi bi-person-fill"></i></div>
+                                <h6 class="fw-bold mb-0">Chamari Bandara</h6>
+                                <div class="small text-primary mb-2" th:text="#{home.brokers.role}">Mortgage Broker</div>
+                                <div class="small text-muted"><span th:text="#{home.brokers.basedIn}">Based in</span> Anuradhapura</div>
+                            </div>
+                        </div>
+
+                        <div class="broker-card reveal-on-scroll" data-province="uva">
+                            <div class="broker-card-inner text-center p-3">
+                                <div class="broker-avatar mx-auto mb-3" style="background: linear-gradient(135deg, #ff9f1c, #ffbf69);"><i class="bi bi-person-fill"></i></div>
+                                <h6 class="fw-bold mb-0">Sampath Herath</h6>
+                                <div class="small text-primary mb-2" th:text="#{home.brokers.role}">Mortgage Broker</div>
+                                <div class="small text-muted"><span th:text="#{home.brokers.basedIn}">Based in</span> Badulla</div>
+                            </div>
+                        </div>
+
+                        <div class="broker-card reveal-on-scroll" data-province="sabaragamuwa">
+                            <div class="broker-card-inner text-center p-3">
+                                <div class="broker-avatar mx-auto mb-3" style="background: linear-gradient(135deg, #197278, #57a773);"><i class="bi bi-person-fill"></i></div>
+                                <h6 class="fw-bold mb-0">Nimali Rathnayake</h6>
+                                <div class="small text-primary mb-2" th:text="#{home.brokers.role}">Mortgage Broker</div>
+                                <div class="small text-muted"><span th:text="#{home.brokers.basedIn}">Based in</span> Ratnapura</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <button type="button" class="broker-scroll-btn" id="brokerScrollBtn" aria-label="Scroll">
+                    <i class="bi bi-chevron-right"></i>
+                </button>
             </div>
         </div>
     </section>
@@ -245,6 +368,9 @@
 
     <div th:replace="~{fragments/layout :: footer}"></div>
     <div th:replace="~{fragments/layout :: scripts}"></div>
+    <script th:src="@{/js/hero-typewriter.js}"></script>
+    <script th:src="@{/js/scroll-reveal.js}"></script>
     <script th:src="@{/js/listings-carousel.js}"></script>
+    <script th:src="@{/js/brokers.js}"></script>
 </body>
 </html>
