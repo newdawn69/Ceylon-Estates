@@ -36,7 +36,12 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         matches.forEach(function (card) {
-            track.appendChild(card.cloneNode(true));
+            const clone = card.cloneNode(true);
+            clone.classList.remove('is-visible');
+            track.appendChild(clone);
+            if (window.ScrollReveal) {
+                window.ScrollReveal.observe(clone);
+            }
         });
 
         // Only loop/auto-rotate when there are more matching listings than
@@ -46,7 +51,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         matches.slice(0, visibleCount - 1).forEach(function (card) {
-            track.appendChild(card.cloneNode(true));
+            const clone = card.cloneNode(true);
+            // These wrap-around clones are duplicates used purely for the
+            // seamless loop — show them immediately rather than waiting for
+            // a scroll trigger that may never fire for an off-screen clone.
+            clone.classList.add('is-visible');
+            track.appendChild(clone);
         });
 
         const totalOriginal = matches.length;
