@@ -68,17 +68,10 @@ body {
 }
 
 .auth-logo {
-    width: 56px;
-    height: 56px;
-    border-radius: 16px;
-    background: linear-gradient(135deg, #5b63f5, #8b5cf6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 20px;
+    height: 64px;
+    width: auto;
+    display: block;
     margin: 0 auto 20px;
-    color: #fff;
 }
 
 .auth-title {
@@ -233,7 +226,7 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
-    background-color: #fff;
+    background-color: #c9c9c9;
     color: #333;
     border: none;
     border-radius: 10px;
@@ -243,8 +236,8 @@ body {
 }
 
 .listing-tab.active {
-    background-color: #3f5b45;
-    color: #fff;
+    background-color: #fff;
+    color: #333;
 }
 
 .listing-carousel-viewport {
@@ -326,4 +319,150 @@ body {
 
 .listing-body a {
     color: #1565c0;
+}
+
+/* ---------- Local mortgage brokers section ---------- */
+
+.broker-filter-btn {
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-weight: 600;
+    color: #1a1a1a;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.broker-district-option.active {
+    background-color: #3f5b45;
+    color: #fff;
+}
+
+.broker-row-viewport {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+    /* Fade the edges instead of hard-clipping cards mid-scroll */
+    -webkit-mask-image: linear-gradient(to right, transparent 0, black 30px, black calc(100% - 30px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, black 30px, black calc(100% - 30px), transparent 100%);
+}
+
+.broker-row-viewport::-webkit-scrollbar {
+    display: none;
+}
+
+.broker-row {
+    display: flex;
+    gap: 20px;
+}
+
+.broker-card {
+    flex: 0 0 200px;
+}
+
+.broker-card-inner {
+    background-color: #fff;
+    color: #1a1a1a;
+    border: 1px solid #eee;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.broker-card-inner h6 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.6em;
+    line-height: 1.3em;
+}
+
+/* Same "pop up" hover treatment as the listing cards */
+.broker-card-inner:hover {
+    transform: translateY(-10px) scale(1.04);
+    box-shadow: 0 18px 34px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 2;
+}
+
+.broker-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.8rem;
+}
+
+.broker-scroll-btn {
+    position: absolute;
+    top: 50%;
+    right: -18px;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.broker-scroll-btn:hover {
+    background-color: #f2f2f2;
+}
+
+/* ---------- Scroll-reveal (fade + slide up into place) ---------- */
+
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    /* "none" (not translateY(0)) so revealed elements don't permanently sit
+       in their own stacking context — a non-none transform, even a zero one,
+       creates a stacking layer that can trap dropdowns/menus underneath
+       later content in the page. */
+    transform: none;
+}
+
+/* Cascading stagger for the listing cards */
+.listing-carousel-track .listing-card:nth-child(1) { transition-delay: 0s; }
+.listing-carousel-track .listing-card:nth-child(2) { transition-delay: 0.1s; }
+.listing-carousel-track .listing-card:nth-child(3) { transition-delay: 0.2s; }
+.listing-carousel-track .listing-card:nth-child(4) { transition-delay: 0.3s; }
+
+/* Cascading stagger for the broker cards */
+.broker-row .broker-card:nth-child(1) { transition-delay: 0s; }
+.broker-row .broker-card:nth-child(2) { transition-delay: 0.1s; }
+.broker-row .broker-card:nth-child(3) { transition-delay: 0.2s; }
+.broker-row .broker-card:nth-child(4) { transition-delay: 0.3s; }
+.broker-row .broker-card:nth-child(5) { transition-delay: 0.4s; }
+
+/* ---------- Hero search bar + animated typed word ---------- */
+
+.hero-typed-cursor {
+    animation: heroCursorBlink 1s steps(1) infinite;
+}
+
+@keyframes heroCursorBlink {
+    0%, 50% { opacity: 1; }
+    50.01%, 100% { opacity: 0; }
 }
